@@ -1,0 +1,1 @@
+﻿Get-WmiObject Win32_LogicalDisk -ComputerName (Get-Content "C:\Users\Okan Cekem\Desktop\Windows PS\ps_python_opdr\Servers.txt") -filter "DriveType=3" | Select SystemName,DeviceID,VolumeName,@{Name="Size(GB)";Expression={"{0:N1}" -f($_.size/1gb)}},@{Name="FreeSpace(GB)";Expression={"{0:N1}" -f($_.freespace/1gb)}} | Out-GridView
